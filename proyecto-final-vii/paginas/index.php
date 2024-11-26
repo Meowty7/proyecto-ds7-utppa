@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Verificar si el usuario ya está autenticado
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,7 +28,7 @@
         .cuadro {
             width: 400px;
             height: 150px;
-            background-color: black;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/9665/9665236.png');
             background-size: cover;
             background-position: center;
             color: white;
@@ -81,7 +91,7 @@
         <a href="  ">Lista Administradores</a>
     </div>
     <div class="cuadro">
-        <a href="login.php">Registro de inventario de partes de autos </a>
+        <a href="FormularioRegistro.php">Registro de inventario de partes de autos </a>
     </div>
     <div class="cuadro">
         <a href="  "> Ubicaciones de los item del auto</a>
@@ -111,8 +121,11 @@
 <br>
 </div>
 <footer>
-    © <span id="year"> <?php echo date("Y")?> </span> PROYECTO FINAL. All rights reserved. <br>
+    © <span id="year"></span> PROYECTO FINAL. All rights reserved. <br>
     Contacto: contacto@itech.com
 </footer>
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>

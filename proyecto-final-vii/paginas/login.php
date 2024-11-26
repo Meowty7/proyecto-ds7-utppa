@@ -3,6 +3,13 @@ require_once '../modelos/Usuarios.php';
 
 session_start();
 
+// Verificar si ya hay una sesión activa
+if (isset($_SESSION['usuario']) && $_SESSION['usuario']['activo'] == 1) {
+    // Si el usuario está logueado, redirigirlo a otra página (por ejemplo, dashboard)
+    header('Location: /');  // Cambia a la página a la que quieras redirigir
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $correoOUsuario = $_POST['correoOUsuario'] ?? '';
     $contrasena = $_POST['contrasena'] ?? '';
@@ -21,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'activo' => $usuarioLogueado->getActivo(),
         ];
 
-        // Redirigir al usuario a la página de inicio
-        header('Location: dashboard.php');
+        // Redirigir al usuario a la página de inicio o al dashboard
+        header('Location: index.php');  // Cambia esta ruta si es necesario
         exit;
 
     } catch (Exception $e) {
