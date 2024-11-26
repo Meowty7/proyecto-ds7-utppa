@@ -198,8 +198,7 @@ class UsuarioAcciones
         $resultado = $stmt->get_result();
         if ($resultado->num_rows > 0) {
             $fila = $resultado->fetch_assoc();
-            $usuario = new Usuario($fila['usuario'], $fila['apellido'], $fila['contrasena'], $fila['correo'], $fila['cedula'], $fila['activo'], $fila['idUsuario']);
-            return $usuario;
+            return new Usuario($fila['usuario'], $fila['apellido'], $fila['contrasena'], $fila['correo'], $fila['cedula'], $fila['activo'], $fila['idUsuario']);
         }
         return null;
     }

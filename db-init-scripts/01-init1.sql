@@ -3,7 +3,7 @@ create table if not exists secciones
     idSeccion   int auto_increment
         primary key,
     nombre      varchar(50)  not null,
-    descripcion varchar(200) not null
+    ubicacion varchar(200) not null
 );
 
 create table if not exists inventario
@@ -17,7 +17,7 @@ create table if not exists inventario
     cantidad     int            not null,
     costo        decimal(10, 2) not null,
     idSeccion    int            not null,
-    imagen       blob           null,
+    imagen       varchar(255)           null,
     constraint inventario_ibfk_1
         foreign key (idSeccion) references secciones (idSeccion)
 );
