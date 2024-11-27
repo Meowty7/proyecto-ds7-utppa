@@ -7,7 +7,51 @@ session_start(); // Iniciar la sesión al principio
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro de Partes de Autos</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el formulario */
+            body {
+                text-align: center;
+                font-family: Arial, sans-serif;
+                background-image: url('https://stories.weroad.es/wp-content/uploads/2019/11/Fuji.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+            .form-container {
+                background-color: white;
+                width: 70%;
+                max-width: 500px;
+                margin: 50px auto;
+                padding: 20px;
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+            }
+
+            h2 {
+                text-align: center;
+                color: #333;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: bold;
+                color: #555;
+            }
+
+            input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+           
+
+        </style>
 </head>
 <body>
     <div class="form-container">
