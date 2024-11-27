@@ -203,6 +203,8 @@ class UsuarioAcciones
         return null;
     }
 
+
+
 }
 
 
@@ -249,7 +251,8 @@ class UsuariosTabla {
                 SET usuario = ?, apellido = ?, contrasena = ?, correo = ?, cedula = ?, activo = ? 
                 WHERE idUsuario = ?";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssssssi", $usuario, $apellido, Encriptador::encriptarContrasena($contrasena), $correo, $cedula, $activo, $idUsuario);
+        $passEncrypt = Encriptador::encriptarContrasena($contrasena);
+        $stmt->bind_param("ssssssi", $usuario, $apellido, $passEncrypt, $correo, $cedula, $activo, $idUsuario);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {

@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div>
                 <label for="contrasena" class="block text-gray-700 font-semibold">Contraseña:</label>
-                <input type="password" id="contrasena" name="contrasena" 
+                <input type="password" id="contrasena" name="contrasena" value ="<?php echo $usuario['contrasena']; ?>"
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-teal-300" required>
             </div>
 

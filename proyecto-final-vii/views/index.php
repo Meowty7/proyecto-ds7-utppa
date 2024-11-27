@@ -110,6 +110,9 @@ if (!isset($_SESSION['usuario'])) {
     <div class="cuadro">
         <a href="cerrar_sesion.php">Salir</a>
     </div>
+    <div class="cuadro">
+        <a href="inventario.php">Gestion Inventario</a>
+    </div>
 </div>
 
 <br>
