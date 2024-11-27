@@ -97,6 +97,9 @@ if (!isset($_SESSION['usuario'])) {
     <div class="cuadro">
         <a href="demo.php">Registro de inventario de partes de autos </a>
     </div>
+    <div class="cuadro">
+        <a href="Registro.php">Registro Usuarios </a>
+    </div>
     
 </div>
 <div class="container">
