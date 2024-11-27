@@ -17,7 +17,7 @@ create table if not exists inventario
     cantidad     int            not null,
     costo        decimal(10, 2) not null,
     idSeccion    int            not null,
-    imagen       longblog       null,
+    imagen       int            not null,
     constraint inventario_ibfk_1
         foreign key (idSeccion) references secciones (idSeccion)
 );
