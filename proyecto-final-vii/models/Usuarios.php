@@ -221,7 +221,7 @@ class UsuariosTabla {
                             <td>{$row['idUsuario']}</td>
                             <td>{$row['usuario']}</td>
                             <td>{$row['apellido']}</td>
-                            <td>{$row['contrasena']}</td>
+                            <td>*************</td>
                             <td>{$row['correo']}</td>
                             <td>{$row['cedula']}</td>
                             <td>{$row['activo']}</td>";
@@ -249,7 +249,7 @@ class UsuariosTabla {
                 SET usuario = ?, apellido = ?, contrasena = ?, correo = ?, cedula = ?, activo = ? 
                 WHERE idUsuario = ?";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ssssssi", $usuario, $apellido, $contrasena, $correo, $cedula, $activo, $idUsuario);
+        $stmt->bind_param("ssssssi", $usuario, $apellido, Encriptador::encriptarContrasena($contrasena), $correo, $cedula, $activo, $idUsuario);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
