@@ -105,106 +105,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movimiento de Inventario</title>
-<<<<<<< HEAD
-    
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-image: url('https://wallpaper.dog/large/20624419.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        .form-container {
-            background-color: white;
-            width: 70%;
-            max-width: 500px;
-            margin: 50px auto;
-            padding: 20px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-        }
-        form, table {
-            max-width: 800px;
-            margin: 20px auto;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        input, select, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .message {
-            text-align: center;
-            font-size: 14px;
-            color: red;
-        }
-        button2 {
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 <h2 class="text-4xl font-bold text-center text-white mb-6">Movimiento de Inventario</h2>
-<button2 onclick="window.location.href='index.php'"style="position: absolute; top: 10px; left: 110px; background-color: #04858c; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer;">Pagina Inicio</button2>
-   
-<div class="form-container">
-    <!-- Tabla de Inventarios -->
-    <table>
-        <thead>
-        <tr>
-            <th>ID Inventario</th>
-            <th>Ubicación</th>
-            <th>Marca</th>
-            <th>Partes de Autos</th>
-            <th>Modelo</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($inventarios as $inventario): ?>
-            <tr>
-                <td><?= $inventario->getIdInventario(); ?></td>
-                <td><?= $accionesUbicacion->obtenerPorId($inventario->getIdSeccion())->getUbicacion(); ?></td>
-                <td><?= $inventario->getMarca(); ?></td>
-                <td><?= $inventario->getParte(); ?></td>
-                <td><?= $inventario->getModelo(); ?></td>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-=======
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-5">
@@ -253,7 +156,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Mover Inventario</button>
     </form>
->>>>>>> ecdf32d898a4281e236adc15c0ae28c969da8a7d
 </div>
 </body>
 </html>
