@@ -98,6 +98,12 @@ session_start(); // Iniciar la sesión al principio
            <label for="Costo">Costo:</label>
            <input type="number" id="Costo" name="Costo" placeholder="Costo..." required>
 
+           <label for="Imagen">Coloca la imagen:</label>
+              <input type="file" id="Imagen" name="Imagen" accept="image/*">
+             <br><br>
+
+           <label for="Descripcion">Coloca la descripcion :</label>
+
             <label for="Año">Año:</label>
             <input type="number" id="Año" name="Año" placeholder="Ej. 2020" required min="1900" max="2024">
 
