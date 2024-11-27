@@ -6,9 +6,9 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
-require_once '../modelos/Inventario.php'; // Clase para manejar inventario
-require_once '../modelos/MovimientoInventario.php'; // Clase para manejar movimientos de inventario
-require_once '../modelos/Ubicacion.php'; // Clase para manejar secciones
+require_once '../models/Inventario.php'; // Clase para manejar inventario
+require_once '../models/MovimientoInventario.php'; // Clase para manejar movimientos de inventario
+require_once '../models/Ubicacion.php'; // Clase para manejar secciones
 
 $accionesInventario = new InventarioAcciones();
 $accionesMovimientos = new MovimientosAcciones();

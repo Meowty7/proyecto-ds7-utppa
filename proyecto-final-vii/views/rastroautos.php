@@ -1,6 +1,6 @@
 <?php
 
-require_once '../modelos/Inventario.php';
+require_once '../models/Inventario.php';
 
 $accionesInventario = new InventarioAcciones();
 

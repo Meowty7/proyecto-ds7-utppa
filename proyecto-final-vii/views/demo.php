@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once '../modelos/Inventario.php';
+require_once '../models/Inventario.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
