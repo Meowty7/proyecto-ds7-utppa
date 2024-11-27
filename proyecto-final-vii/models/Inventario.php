@@ -84,7 +84,7 @@ class Inventario {
 class InventarioAcciones {
 
     // Obtener un inventario por su ID
-    public function obtenerPorId($idInventario): array
+    public function obtenerPorId($idInventario): ?Inventario
     {
         $conexion = ConexionBD::obtenerConexion();
         $sql = "SELECT * FROM inventario WHERE idInventario = ?";
@@ -93,11 +93,9 @@ class InventarioAcciones {
         $stmt->execute();
         $resultado = $stmt->get_result();
 
-        $inventarios = []; // Lista que almacenará los resultados
-
         if ($resultado->num_rows > 0) {
-            while ($fila = $resultado->fetch_assoc()) {
-                $inventarios[] = new Inventario(
+            $fila = $resultado->fetch_assoc();
+                return new Inventario(
                     $fila['parte'],
                     $fila['marca'],
                     $fila['modelo'],
@@ -109,18 +107,45 @@ class InventarioAcciones {
                     $fila['idInventario'],
                     $fila['descripcion']
                 );
-            }
         }
+        return null;
+    }
 
-        return $inventarios;  // Retorna una lista (array) de objetos Inventario
+    public function obtenerInventarioPorParteYSeccion($idInventario, $idSeccion): ?Inventario
+    {
+        $conexion = ConexionBD::obtenerConexion();
+        $sql = "SELECT * FROM inventario WHERE idInventario = ? AND idSeccion = ?";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param("ii", $idInventario, $idSeccion);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        if ($resultado->num_rows > 0) {
+            $fila = $resultado->fetch_assoc();
+
+            // Devolvemos un objeto Inventario con todos los parámetros necesarios
+            return new Inventario(
+                $fila['parte'],            // Parte
+                $fila['marca'],            // Marca
+                $fila['modelo'],           // Modelo
+                $fila['fecha'],            // Fecha
+                $fila['cantidad'],         // Cantidad
+                $fila['costo'],            // Costo
+                $fila['idSeccion'],        // idSeccion
+                $fila['imagen'],           // Imagen
+                $fila['idInventario'],     // idInventario
+                $fila['descripcion']       // Descripción
+            );
+        }
+        return null;  // No existe inventario para esa parte en esa sección
     }
 
     // Crear un nuevo inventario
     public function crear(Inventario $inventario): bool
     {
         $conexion = ConexionBD::obtenerConexion();
-        $sql = "INSERT INTO inventario (parte, marca, modelo, fecha, cantidad, costo, idSeccion, imagen) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO inventario (parte, marca, modelo, fecha, cantidad, costo, idSeccion, imagen, descripcion) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conexion->prepare($sql);
 
         // Los parámetros que insertaremos
@@ -132,10 +157,11 @@ class InventarioAcciones {
             $inventario->getCantidad(),
             $inventario->getCosto(),
             $inventario->getIdSeccion(),
-            $inventario->getImagen()
+            $inventario->getImagen(),
+            $inventario->getDescripcion()
         ];
 
-        $stmt->bind_param("ssssiiis", ...$params);  // "ssssiiis" corresponde a los tipos de datos (strings e integers)
+        $stmt->bind_param("ssssiiiss", ...$params);  // "ssssiiis" corresponde a los tipos de datos (strings e integers)
 
         if ($stmt->execute()) {
             // Si el inventario se crea correctamente, devolver el ID asignado
@@ -152,7 +178,7 @@ class InventarioAcciones {
         if ($inventario->getIdInventario()) {
             $conexion = ConexionBD::obtenerConexion();
             $sql = "UPDATE inventario SET parte = ?, marca = ?, modelo = ?, fecha = ?, cantidad = ?, costo = ?, 
-                    idSeccion = ?, imagen = ? WHERE idInventario = ?";
+                idSeccion = ?, imagen = ?, descripcion = ? WHERE idInventario = ?";
             $stmt = $conexion->prepare($sql);
 
             // Los parámetros que vamos a actualizar
@@ -165,15 +191,21 @@ class InventarioAcciones {
                 $inventario->getCosto(),
                 $inventario->getIdSeccion(),
                 $inventario->getImagen(),
-                $inventario->getIdInventario()
+                $inventario->getDescripcion(),
+                $inventario->getIdInventario()  // Este parámetro solo lo debes pasar una vez al final
             ];
 
-            $stmt->bind_param("ssssiiisi", ...$params);  // "ssssiiisi" corresponde a los tipos de datos (strings e integers)
-
+            // Ajustar los tipos en bind_param:
+            // "ssssiiissi" corresponde a los tipos de los parámetros
+            $stmt->bind_param("ssssiiissi", ...$params);  // Ahora hay 10 parámetros, y el tipo es el correcto.
+            if(!$stmt->execute()){
+                echo 'PAYALA BESTIA';
+            }
             return $stmt->execute();  // Retorna si la ejecución fue exitosa
         }
         return false;
     }
+
 
     // Obtener todos los inventarios
     public function obtenerTodos(): array

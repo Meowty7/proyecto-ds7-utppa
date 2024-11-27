@@ -21,7 +21,7 @@ create table if not exists inventario
     costo        decimal(10, 2) not null,
     idSeccion    int            not null,
     imagen       varchar(255)       null,
-    descripcion  varchar(255)   not null,
+    descripcion  varchar(255)   default '',
     constraint inventario_ibfk_1
         foreign key (idSeccion) references secciones (idSeccion)
 );
@@ -34,7 +34,7 @@ create table if not exists movimientos_inventario
     idMovimiento    int auto_increment
         primary key,
     idInventario    int                        not null,
-    tipoMovimiento  enum ('entrada', 'salida') not null,
+    tipoMovimiento  enum ('entrada', 'salida', '') not null,
     cantidad        int                        not null,
     fechaMovimiento datetime                   not null,
     constraint movimientos_inventario_ibfk_1
