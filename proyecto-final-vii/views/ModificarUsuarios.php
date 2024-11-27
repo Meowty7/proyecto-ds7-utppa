@@ -7,12 +7,13 @@ session_start(); // Iniciar la sesión al principio
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro de Partes de Autos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Estilos para el formulario */
             body {
                 text-align: center;
                 font-family: Arial, sans-serif;
-                background-image: url('https://stories.weroad.es/wp-content/uploads/2019/11/Fuji.jpg');
+                background-image: url('https://wallpaper.dog/large/20624419.jpg');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -30,7 +31,7 @@ session_start(); // Iniciar la sesión al principio
 
             .container {
             width: 85%;
-            margin: auto;
+            margin: 50px auto;
             padding: 20px;
             background-color: #f9f9f9;
             border-radius: 8px;
@@ -59,7 +60,7 @@ session_start(); // Iniciar la sesión al principio
         </style>
 </head>
 <body>
-
+<h2 class="text-4xl font-bold text-center text-white mb-6">Lista de Usuarios</h2>
     <button onclick="window.location.href='index.php'"style="position: absolute; top: 10px; left: 110px; background-color: #04858c; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer;">Pagina Inicio</button>
    
     <?php

@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movimiento de Inventario</title>
+    
     <style>
         body {
             text-align: center;
@@ -124,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-<h2 style="text-align: center;">Movimiento de Inventario</h2>
+<h2 class="text-4xl font-bold text-center text-white mb-6">Movimiento de Inventario</h2>
 <button2 onclick="window.location.href='index.php'"style="position: absolute; top: 10px; left: 110px; background-color: #04858c; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer;">Pagina Inicio</button2>
    
 <div class="form-container">

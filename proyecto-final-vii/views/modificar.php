@@ -31,9 +31,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Modificar Usuario</title>
+    <style>
+            body {
+                text-align: center;
+                font-family: Arial, sans-serif;
+                background-image: url('https://wallpaper.dog/large/20624419.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            .container {
+            background-color: white;
+            width: 70%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        </style>
 </head>
 <body>
+<button onclick="window.location.href='index.php'"style="position: absolute; top: 10px; left: 110px; background-color: #04858c; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer;">Pagina Inicio</button>
+   
+<?php
+    // Mostrar el mensaje de sesión si existe
+    if (isset($_SESSION['mensaje'])) {
+        echo "<p>" . $_SESSION['mensaje'] . "</p>";
+        unset($_SESSION['mensaje']); // Limpiar el mensaje después de mostrarlo
+    }
+    ?>
     <h1>Modificar Usuario</h1>
+    <div class="container">
     <form method="post" action="">
         <input type="hidden" name="idUsuario" value="<?php echo $usuario['idUsuario']; ?>">
         Usuario: <input type="text" name="usuario" value="<?php echo $usuario['usuario']; ?>" required><br><br>
@@ -41,8 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Contraseña: <input type="text" name="contrasena" value="<?php echo $usuario['contrasena']; ?>" required><br><br>
         Correo: <input type="text" name="correo" value="<?php echo $usuario['correo']; ?>" required><br><br>
         Cédula: <input type="text" name="cedula" value="<?php echo $usuario['cedula']; ?>" required><br><br>
-        Activo: <input type="text" name="activo" value="<?php echo $usuario['activo']; ?>" required><br><br>
+        Activo: <input type="number" name="activo" min="0" max="1" value="<?php echo $usuario['activo']; ?>" required><br><br>
+
         <input type="submit" value="Actualizar">
     </form>
+    </div>
 </body>
 </html>

@@ -28,7 +28,7 @@ if (!isset($_SESSION['usuario'])) {
         .cuadro {
             width: 400px;
             height: 150px;
-            background-image: url('https://cdn-icons-png.flaticon.com/512/9665/9665236.png');
+            background-image: url('https://www.shutterstock.com/image-photo/admin-word-written-on-wooden-260nw-1948964320.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -49,7 +49,11 @@ if (!isset($_SESSION['usuario'])) {
             display: block;
             height: 100%;
             width: 100%;
+            font-size: 20px; /* Tamaño de letra */
+            font-weight: 700; 
         }
+
+
 
         .cuadro:hover {
             background-color: #45a049;
@@ -94,7 +98,7 @@ if (!isset($_SESSION['usuario'])) {
         <a href="demo.php">Registro de inventario de partes de autos </a>
     </div>
     <div class="cuadro">
-        <a href=""> Ubicaciones de los item del auto</a>
+        <a href=""> Dar de BAJA item</a>
     </div>
 </div>
 <div class="container">

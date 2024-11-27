@@ -253,9 +253,15 @@ class UsuariosTabla {
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            echo "Usuario actualizado correctamente.";
+        
+            $_SESSION['mensaje'] = "Usuario actualizado correctamente.";
+            header("Location: ../ModificarUsuarios.php");
+            exit();
         } else {
-            echo "No se pudo actualizar el usuario.";
+           
+            $_SESSION['mensaje'] = "No se pudo actualizar el usuario.";
+            header("Location: ../ModificarUsuarios.php");
+            exit();
         }
 
         $stmt->close();
