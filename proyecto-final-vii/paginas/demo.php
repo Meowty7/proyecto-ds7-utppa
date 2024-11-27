@@ -109,11 +109,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div>
             <label for="marca" class="block text-sm font-medium text-gray-700">Marca:</label>
-            <input type="text" name="marca" id="marca" required
-                   class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-        </div>
+            <select name="marca" id="marca" required
+                    class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                     <option value="TOYOTA">TOYOTA</option>
+                    <option value="NISSAN" selected>NISSAN</option>
+                    <option value="CHEVROLET">CHEVROLET</option>
+                    <option value="LEXUS">LEXUS</option>
+                    <option value="FORD" selected>FORD</option>
+                    <option value="HONDA">HONDA</option>
+                    <option value="BMW" selected>BMW</option>
+                    <option value="MAZDA">MAZDA</option>
+                    </select>
+                </div>
 
         <div>
+       
             <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo:</label>
             <input type="text" name="modelo" id="modelo" required
                    class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
