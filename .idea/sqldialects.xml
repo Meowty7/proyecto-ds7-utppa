@@ -3,10 +3,10 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/db-init-scripts/01-init1.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/db-init-scripts/02-init2.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/proyecto-final-vii/modelos/Inventario.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/proyecto-final-vii/modelos/MovimientoInventario.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/proyecto-final-vii/modelos/Ubicacion.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/proyecto-final-vii/modelos/Usuarios.php" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/proyecto-final-vii/paginas/demo.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/proyecto-final-vii/models/Inventario.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/proyecto-final-vii/models/MovimientoInventario.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/proyecto-final-vii/models/Ubicacion.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/proyecto-final-vii/models/Usuarios.php" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/proyecto-final-vii/views/demo.php" dialect="MySQL" />
   </component>
 </project>

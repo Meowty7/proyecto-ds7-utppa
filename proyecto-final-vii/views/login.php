@@ -1,5 +1,5 @@
 <?php
-require_once '../modelos/Usuarios.php';
+require_once '../models/Usuarios.php';
 
 session_start();
 
