@@ -155,6 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="Sucursal1">Sucursal1</option>
                 <option value="Sucursal2">Sucursal2</option>
                 <option value="Sucursal3">Sucursal3</option>
+                <option value="Sucursal4">Sucursal4</option>
             </select>
         </div>
 
