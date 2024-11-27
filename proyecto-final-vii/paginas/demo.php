@@ -152,10 +152,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="idSeccion" class="block text-sm font-medium text-gray-700">Sección:</label>
             <select name="idSeccion" id="idSeccion" required
                     class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                <option value="Sucursal 1">Sucursal1</option>
-                <option value="Sucursal 2">Sucursal2</option>
-                <option value="Sucursal 3">Sucursal3</option>
-                <option value="Sucursal 4">Sucursal4</option>
+                <option value="Sucursal 1">Sucursal 1</option>
+                <option value="Sucursal 2">Sucursal 2</option>
+                <option value="Sucursal 3">Sucursal 3</option>
+                <option value="Sucursal 4">Sucursal 4</option>
             </select>
         </div>
 
