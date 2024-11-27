@@ -19,7 +19,7 @@ if (!isset($_SESSION['usuario'])) {
             text-align: center;
             font-family: Arial, sans-serif;
 
-            background-image: url('https://stories.weroad.es/wp-content/uploads/2019/11/Fuji.jpg');
+            background-image: url('https://wallpaper.dog/large/20624419.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -91,10 +91,10 @@ if (!isset($_SESSION['usuario'])) {
         <a href="  ">Lista Administradores</a>
     </div>
     <div class="cuadro">
-        <a href="FormularioRegistro.php">Registro de inventario de partes de autos </a>
+        <a href="demo.php">Registro de inventario de partes de autos </a>
     </div>
     <div class="cuadro">
-        <a href="demo.php"> Ubicaciones de los item del auto</a>
+        <a href=""> Ubicaciones de los item del auto</a>
     </div>
 </div>
 <div class="container">

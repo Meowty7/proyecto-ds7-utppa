@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  body {
                 text-align: center;
                 font-family: Arial, sans-serif;
-                background-image: url('https://stories.weroad.es/wp-content/uploads/2019/11/Fuji.jpg');
+                background-image: url('https://wallpaper.dog/large/20624419.jpg');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
