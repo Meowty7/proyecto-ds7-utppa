@@ -19,7 +19,7 @@ $inventarios = $accionesInventario->obtenerTodos();
     <h1 class="text-4xl font-bold text-center mb-8">Rastro de Auto Partes</h1>
 
     <!-- Contenedor de registros -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-8 gap-6">
         <?php foreach ($inventarios as $inventario): ?>
             <div
                     class="bg-white shadow-md hover:shadow-lg rounded-lg overflow-hidden cursor-pointer"
@@ -36,7 +36,7 @@ $inventarios = $accionesInventario->obtenerTodos();
                     ])) ?>'
                             )"
             >
-                <img src="<?= htmlspecialchars($inventario->getImagen()) ?>" alt="<?= htmlspecialchars($inventario->getParte()) ?>" class="w-full h-40 object-cover">
+                <img src="<?= htmlspecialchars($inventario->getImagen()) ?>" alt="<?= htmlspecialchars($inventario->getParte()) ?>" class="w-24 h-24 object-cover mx-auto">
                 <div class="p-4">
                     <h2 class="font-bold text-lg"><?= htmlspecialchars($inventario->getParte()) ?></h2>
                     <p class="text-gray-600"><?= htmlspecialchars($inventario->getMarca()) ?> - <?= htmlspecialchars($inventario->getModelo()) ?></p>
@@ -48,15 +48,17 @@ $inventarios = $accionesInventario->obtenerTodos();
 
 <!-- Modal de Detalle -->
 <div id="detalleModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-    <div class="bg-white rounded-lg shadow-lg max-w-lg w-full">
-        <div class="relative">
+    <div class="bg-white rounded-lg shadow-lg max-w-4xl w-full flex">
+        <!-- Imagen en el modal -->
+        <div class="flex-shrink-0 w-1/2 p-4">
+            <img id="detalleImagen" src="" alt="Detalle de la Parte" class="w-full h-auto object-contain">
+        </div>
+        <!-- Información de la parte -->
+        <div class="w-1/2 p-6">
             <button onclick="cerrarDetalle()" class="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 rounded-full p-2 text-gray-600">
                 &times;
             </button>
-            <img id="detalleImagen" src="" alt="Detalle de la Parte" class="w-full h-64 object-cover rounded-t-lg">
-        </div>
-        <div class="p-6">
-            <h2 id="detalleTitulo" class="text-2xl font-bold mb-2"></h2>
+            <h2 id="detalleTitulo" class="text-3xl font-bold mb-4"></h2>
             <p id="detalleDescripcion" class="text-gray-700 mb-4"></p>
             <p class="text-lg"><strong>Costo:</strong> $<span id="detalleCosto"></span></p>
             <p class="text-lg"><strong>Unidades Disponibles:</strong> <span id="detalleCantidad"></span></p>
