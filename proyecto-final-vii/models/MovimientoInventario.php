@@ -23,7 +23,8 @@ class MovimientoInventario {
     public function getFechaMovimiento() { return $this->fechaMovimiento; }
 
     public function setTipoMovimiento($tipoMovimiento) { $this->tipoMovimiento = $tipoMovimiento; }
-    public function setCantidad($cantidad) { $this->cantidad = $cantidad; }
+    public function setCantidad($cantidad): void
+    { $this->cantidad = $cantidad; }
 }
 
 class MovimientosAcciones {

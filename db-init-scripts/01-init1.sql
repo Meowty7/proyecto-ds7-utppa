@@ -1,3 +1,6 @@
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+
 create table if not exists secciones
 (
     idSeccion   int auto_increment
@@ -17,7 +20,12 @@ create table if not exists inventario
     cantidad     int            not null,
     costo        decimal(10, 2) not null,
     idSeccion    int            not null,
+<<<<<<< HEAD
     imagen       int            not null,
+=======
+    imagen       varchar(255)       null,
+    descripcion  varchar(255)   default '',
+>>>>>>> ecdf32d898a4281e236adc15c0ae28c969da8a7d
     constraint inventario_ibfk_1
         foreign key (idSeccion) references secciones (idSeccion)
 );
@@ -30,7 +38,7 @@ create table if not exists movimientos_inventario
     idMovimiento    int auto_increment
         primary key,
     idInventario    int                        not null,
-    tipoMovimiento  enum ('entrada', 'salida') not null,
+    tipoMovimiento  enum ('entrada', 'salida', '') not null,
     cantidad        int                        not null,
     fechaMovimiento datetime                   not null,
     constraint movimientos_inventario_ibfk_1
