@@ -94,9 +94,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form action="" method="POST" enctype="multipart/form-data" class="space-y-4">
         <div>
             <label for="nombreParte" class="block text-sm font-medium text-gray-700">Nombre de la Parte:</label>
-            <input type="text" name="nombreParte" id="nombreParte" required
-                   class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-        </div>
+            <select name="nombreParte" id="nombreParte" required
+                    class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <option value="Motor"selected>Motor</option>
+                    <option value="Transmision" selected>Transmision</option>
+                    <option value="Suspension"selected>Suspension</option>
+                    <option value="Carroceria"selected>Carroceria</option>
+                    <option value="Radiador" selected>Radiador</option>
+                    <option value="Bateria"selected>Bateria</option>
+                    <option value="CajaDeCambios" selected>CajaDeCambios</option>
+                    <option value="Ruedas"selected>Ruedas</option>
+                    </select>
+                </div>
 
         <div>
             <label for="marca" class="block text-sm font-medium text-gray-700">Marca:</label>
@@ -133,8 +142,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="idSeccion" class="block text-sm font-medium text-gray-700">Sección:</label>
             <select name="idSeccion" id="idSeccion" required
                     class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                <option value="1">Motor</option>
-                <option value="2">Suspensión</option>
+                <option value="Sucursal1">Sucursal1</option>
+                <option value="Sucursal2">Sucursal2</option>
+                <option value="Sucursal3">Sucursal3</option>
             </select>
         </div>
 
