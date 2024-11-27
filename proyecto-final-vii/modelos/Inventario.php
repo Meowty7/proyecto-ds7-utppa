@@ -1,4 +1,5 @@
 <?php
+require_once '../config/ConexionBD.php';
 class Inventario {
     private $idInventario;
     private $parte;
