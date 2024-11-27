@@ -46,6 +46,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+          body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+
+            background-image: url('https://stories.weroad.es/wp-content/uploads/2019/11/Fuji.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 <div class="w-full max-w-md bg-white shadow-md rounded-lg p-6">
