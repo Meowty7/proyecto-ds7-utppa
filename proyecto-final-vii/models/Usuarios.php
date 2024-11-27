@@ -204,3 +204,87 @@ class UsuarioAcciones
     }
 
 }
+
+
+class UsuariosTabla {
+
+    // Función para generar las filas de usuarios en la tabla HTML
+    function generarFilasUsuarios() {
+        $conexion = ConexionBD::obtenerConexion();
+        $sql = "SELECT * FROM usuarios";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>
+                      <td>{$row['idUsuario']}</td>
+                        <td>{$row['usuario']}</td>
+                        <td>{$row['apellido']}</td>
+                        <td>{$row['contrasena']}</td>
+                        <td>{$row['correo']}</td>
+                        <td>{$row['cedula']}</td>
+                        <td>{$row['activo']}</td>
+                      </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='6'>No se encontraron resultados</td></tr>";
+        }
+    
+        $stmt->close();
+        $conexion->close();
+    }
+    
+    
+    // Función para procesar la modificación de la contraseña de un usuario
+    // Función para procesar la modificación de la contraseña de un usuario
+    function procesarModificacionContraseña($contraseñaActual, $nuevaContraseña, $conexion) {
+        // Obtener el ID del usuario activo desde la sesión
+        $idUsuario = $conexion->getUsuario(); // O puedes acceder directamente desde la sesión si ya está guardado
+    
+        // Consulta para obtener la contraseña actual del usuario
+        $query = "SELECT contraseña FROM registro_usuarios WHERE idUsuario = ?";
+        $stmt = $conexion->getConnection()->prepare($query);  // Asegúrate de que 'getConnection()' está accesible
+    
+        if (!$stmt) {
+            return "Error en la preparación de la consulta: " . $conexion->getConnection()->error;
+        }
+    
+        $stmt->bind_param("i", $idUsuario);
+        $stmt->execute();
+        $stmt->bind_result($contraseñaEncriptada);
+        $stmt->fetch();
+        $stmt->close();
+    
+        // Verificar la contraseña actual
+        if (password_verify($contraseñaActual, $contraseñaEncriptada)) {
+            // Encriptar la nueva contraseña
+            $nuevaContraseñaHash = password_hash($nuevaContraseña, PASSWORD_DEFAULT);
+    
+            // Actualizar la contraseña en la base de datos
+            $updateQuery = "UPDATE registro_usuarios SET contraseña = ? WHERE idUsuario = ?";
+            $updateStmt = $conexion->getConnection()->prepare($updateQuery);
+    
+            if (!$updateStmt) {
+                return "Error en la preparación de la actualización: " . $conexion->getConnection()->error;
+            }
+    
+            $updateStmt->bind_param("si", $nuevaContraseñaHash, $idUsuario);
+    
+            if ($updateStmt->execute()) {
+                $updateStmt->close();
+                return "Contraseña actualizada correctamente.";
+            } else {
+                $updateStmt->close();
+                return "Error al actualizar la contraseña.";
+            }
+        } else {
+            return "La contraseña actual es incorrecta.";
+        }
+    }
+    
+    
+    
+    
+    }

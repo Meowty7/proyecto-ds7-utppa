@@ -88,7 +88,7 @@ if (!isset($_SESSION['usuario'])) {
 
 <div class="container">
     <div class="cuadro">
-        <a href="  ">Lista Administradores</a>
+        <a href="ModificarUsuarios.php">Lista Administradores</a>
     </div>
     <div class="cuadro">
         <a href="demo.php">Registro de inventario de partes de autos </a>
