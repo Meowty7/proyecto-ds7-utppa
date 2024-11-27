@@ -13,6 +13,11 @@ $inventarios = $accionesInventario->obtenerTodos();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rastro de Auto Partes</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url("https://static.vecteezy.com/system/resources/previews/012/809/637/non_2x/car-service-centre-auto-repair-workshop-blurred-panoramic-background-photo.jpg");
+        }
+    </style>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
 <div class="container mx-auto p-6">

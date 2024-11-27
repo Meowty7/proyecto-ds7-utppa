@@ -1,5 +1,10 @@
 <?php
-session_start(); // Iniciar la sesión al principio
+session_start(); // Iniciar sesión para manejar mensajes
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

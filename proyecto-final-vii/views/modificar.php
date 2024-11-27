@@ -1,4 +1,11 @@
 <?php
+session_start(); // Iniciar sesión para manejar mensajes
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit();
+}
+
 require_once '../models/Usuarios.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

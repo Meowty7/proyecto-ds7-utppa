@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-100 p-5">
 <div class="container mx-auto">
     <h2 class="text-center text-2xl font-bold mb-5">Movimiento de Inventario</h2>
-
+    <button onclick="window.location.href='index.php'"style="position: absolute; top: 10px; left: 110px; background-color: #04858c; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer;">Pagina Inicio</button>
     <?php if (isset($_SESSION['mensaje'])): ?>
         <div class="bg-green-200 text-green-700 p-2 mb-4 rounded">
             <?= $_SESSION['mensaje']; ?>

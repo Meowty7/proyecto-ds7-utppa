@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cantidad = (int)$_POST['cantidad'];
         $costo = (float)$_POST['costo'];
         $idSeccion = (int)$_POST['idSeccion'];
+        $desc = $_POST['descripcion'];
 
         // Validar el año
         if ($fecha < 1900 || $fecha > 2100) {
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
-            $inventario = new Inventario($nombreParte, $marca, $modelo, $fecha, $cantidad, $costo, $idSeccion, $rutaDestino);
+            $inventario = new Inventario($nombreParte, $marca, $modelo, $fecha, $cantidad, $costo, $idSeccion, $rutaDestino, null, $desc);
 
             $accionesInventario = new InventarioAcciones();
 
@@ -153,11 +154,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="idSeccion" class="block text-sm font-medium text-gray-700">Sección:</label>
             <select name="idSeccion" id="idSeccion" required
                     class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                <option value="Sucursal 1">Sucursal 1</option>
-                <option value="Sucursal 2">Sucursal 2</option>
-                <option value="Sucursal 3">Sucursal 3</option>
-                <option value="Sucursal 4">Sucursal 4</option>
+                <option value="1">Sucursal 1</option>
+                <option value="2">Sucursal 2</option>
+                <option value="3">Sucursal 3</option>
+                <option value="4">Sucursal 4</option>
             </select>
+        </div>
+
+        <div>
+       
+            <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción:</label>
+            <input type="text" name="descripcion" id="descripcion" required
+                   class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
         </div>
 
         <div>
