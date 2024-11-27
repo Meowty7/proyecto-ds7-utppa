@@ -1,40 +1,41 @@
 <?php
 session_start();
 
-// Incluir las clases necesarias
 require_once '../modelos/Inventario.php';
 
-// Manejar la solicitud POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
         // Obtener los datos del formulario
         $nombreParte = $_POST['nombreParte'];
         $marca = $_POST['marca'];
         $modelo = $_POST['modelo'];
+        $fecha = (int)$_POST['fecha']; // Convertir el año a entero
         $cantidad = (int)$_POST['cantidad'];
         $costo = (float)$_POST['costo'];
         $idSeccion = (int)$_POST['idSeccion'];
+
+        // Validar el año
+        if ($fecha < 1900 || $fecha > 2100) {
+            $_SESSION['mensaje'] = "El año ingresado no es válido.";
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        }
 
         // Manejar la imagen subida
         $archivo = $_FILES['imagen'];
         $nombreArchivo = basename($archivo['name']);
         $rutaTemporal = $archivo['tmp_name'];
 
-        // Definir el directorio de destino para las imágenes
-        $directorioDestino = 'uploads/';
+        $directorioDestino = '../images/';
         $rutaDestino = $directorioDestino . $nombreArchivo;
 
-        // Crear el directorio si no existe
         if (!is_dir($directorioDestino)) {
             mkdir($directorioDestino, 0777, true);
         }
 
-        // Mover la imagen al directorio de destino
         if (move_uploaded_file($rutaTemporal, $rutaDestino)) {
-            // Crear un objeto Inventario
-            $inventario = new Inventario($nombreParte, $marca, $modelo, date('Y-m-d'), $cantidad, $costo, $idSeccion, $rutaDestino);
+            $inventario = new Inventario($nombreParte, $marca, $modelo, $fecha, $cantidad, $costo, $idSeccion, $rutaDestino);
 
-            // Llamar al método crear de InventarioAcciones
             $accionesInventario = new InventarioAcciones();
 
             try {
@@ -53,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensaje'] = "Error al subir la imagen.";
     }
 
-    // Redirigir para evitar reenvío del formulario
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
@@ -107,6 +107,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div>
             <label for="costo" class="block text-sm font-medium text-gray-700">Costo:</label>
             <input type="number" step="0.01" name="costo" id="costo" required
+                   class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+
+        <div>
+            <label for="fecha" class="block text-sm font-medium text-gray-700">Año:</label>
+            <input type="number" name="fecha" id="fecha" required placeholder="Ingrese el año (ej: 2024)"
+                   min="1900" max="2100"
                    class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
         </div>
 

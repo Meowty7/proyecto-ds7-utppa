@@ -34,14 +34,18 @@ class Inventario {
     public function getIdSeccion() { return $this->idSeccion; }
     public function getImagen() { return $this->imagen; }
 
-    public function setParte($parte) { $this->parte = $parte; }
-    public function setMarca($marca) { $this->marca = $marca; }
-    public function setModelo($modelo) { $this->modelo = $modelo; }
+    public function setParte($parte): void
+    { $this->parte = $parte; }
+    public function setMarca($marca): void
+    { $this->marca = $marca; }
+    public function setModelo($modelo): void
+    { $this->modelo = $modelo; }
 
     /**
      * @throws Exception
      */
-    public function setFecha($fecha) {
+    public function setFecha($fecha): void
+    {
         if (is_int($fecha) && $fecha >= 1901 && $fecha <= 2155) {
             $this->fecha = $fecha;
         } else {
@@ -49,10 +53,19 @@ class Inventario {
         }
     }
 
-    public function setCantidad($cantidad) { $this->cantidad = $cantidad; }
-    public function setCosto($costo) { $this->costo = $costo; }
-    public function setIdSeccion($idSeccion) { $this->idSeccion = $idSeccion; }
-    public function setImagen($imagen) { $this->imagen = $imagen; }
+    public function setCantidad($cantidad): void
+    { $this->cantidad = $cantidad; }
+    public function setCosto($costo): void
+    { $this->costo = $costo; }
+    public function setIdSeccion($idSeccion): void
+    { $this->idSeccion = $idSeccion; }
+    public function setImagen($imagen): void
+    { $this->imagen = $imagen; }
+
+    public function setIdInventario($idInventario): void
+    {
+        $this->idInventario = $idInventario;
+    }
 }
 
 class InventarioAcciones {

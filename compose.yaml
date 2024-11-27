@@ -5,7 +5,6 @@ services:
     ports:
       - "5200:80"
     volumes:
-      - ./uploads:/app/uploads
       - ./proyecto-final-vii:/var/www/html
       - ./proyecto-final-vii/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
     networks:
