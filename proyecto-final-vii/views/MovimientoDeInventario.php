@@ -45,14 +45,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Registrar movimiento de salida en la sucursal de origen
         $accionesMovimientos->insertarMovimiento($idInventario, 'salida', $cantidad, date('Y-m-d H:i:s'));
 
+        // Actualizar inventario en la sucursal de origen
+        $nuevaCantidadOrigen = $inventarioOriginal->getCantidad() - $cantidad;
+        if ($nuevaCantidadOrigen >= 0) {
+            $inventarioOriginal->setCantidad($nuevaCantidadOrigen);
+            $accionesInventario->actualizar($inventarioOriginal);
+        } else {
+            $_SESSION['mensaje'] = "No hay suficiente cantidad en la sucursal de origen.";
+            header("Location: movimientos.php");
+            exit();
+        }
+
         // Obtener inventario de la sucursal de destino
-        $inventarioDestino = $accionesInventario->obtenerInventarioPorParteYSeccion($idInventario, $sucursalDestino);
+        $inventarioDestino = $accionesInventario->obtenerInventarioPorParteYSeccion($parte, $sucursalDestino);
 
         // Si el inventario existe en la sección de destino, solo actualizar la cantidad
         if ($inventarioDestino) {
             // Actualizar la cantidad sumando la cantidad que se movió
-            $nuevaCantidad = $inventarioDestino->getCantidad() + $cantidad;
-            $inventarioDestino->setCantidad($nuevaCantidad);
+            $nuevaCantidadDestino = $inventarioDestino->getCantidad() + $cantidad;
+            $inventarioDestino->setCantidad($nuevaCantidadDestino);
             $accionesInventario->actualizar($inventarioDestino);
         } else {
             // Si no existe, crear un nuevo registro de inventario con todos los datos

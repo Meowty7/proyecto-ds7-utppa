@@ -111,12 +111,12 @@ class InventarioAcciones {
         return null;
     }
 
-    public function obtenerInventarioPorParteYSeccion($idInventario, $idSeccion): ?Inventario
+    public function obtenerInventarioPorParteYSeccion($parte, $idSeccion): ?Inventario
     {
         $conexion = ConexionBD::obtenerConexion();
-        $sql = "SELECT * FROM inventario WHERE idInventario = ? AND idSeccion = ?";
+        $sql = "SELECT * FROM inventario WHERE parte = ? AND idSeccion = ?";
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("ii", $idInventario, $idSeccion);
+        $stmt->bind_param("si", $parte, $idSeccion);
         $stmt->execute();
         $resultado = $stmt->get_result();
 
