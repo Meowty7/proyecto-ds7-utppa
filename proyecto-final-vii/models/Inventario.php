@@ -11,16 +11,19 @@ class Inventario {
     private $idSeccion;
     private $imagen;
 
-    public function __construct($parte, $marca, $modelo, $fecha, $cantidad, $costo, $idSeccion, $imagen = null, $idInventario = null) {
+    private $descripcion;
+
+    public function __construct($parte, $marca, $modelo, $fecha, $cantidad, $costo, $idSeccion, $imagen = null, $idInventario = null, $descripcion = "") {
+        $this->descripcion = $descripcion;
         $this->idInventario = $idInventario;
         $this->parte = $parte;
         $this->marca = $marca;
         $this->modelo = $modelo;
-        $this->fecha = $fecha;  // Año como un número entero de 4 dígitos (ejemplo: 2023)
+        $this->fecha = $fecha;
         $this->cantidad = $cantidad;
         $this->costo = $costo;
-        $this->idSeccion = $idSeccion;  // Sección a la que pertenece esta parte del inventario
-        $this->imagen = $imagen;  // Ruta o URL de la imagen de la parte del auto
+        $this->idSeccion = $idSeccion;
+        $this->imagen = $imagen;
     }
 
     // Getters y Setters
@@ -66,6 +69,16 @@ class Inventario {
     {
         $this->idInventario = $idInventario;
     }
+
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion($descripcion): void
+    {
+        $this->descripcion = $descripcion;
+    }
 }
 
 class InventarioAcciones {
@@ -93,7 +106,8 @@ class InventarioAcciones {
                     $fila['costo'],
                     $fila['idSeccion'],
                     $fila['imagen'],
-                    $fila['idInventario']
+                    $fila['idInventario'],
+                    $fila['descripcion']
                 );
             }
         }
@@ -182,7 +196,8 @@ class InventarioAcciones {
                 $fila['costo'],
                 $fila['idSeccion'],
                 $fila['imagen'],
-                $fila['idInventario']
+                $fila['idInventario'],
+                $fila['descripcion']
             );
         }
 

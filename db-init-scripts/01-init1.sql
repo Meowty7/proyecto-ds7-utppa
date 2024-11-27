@@ -1,3 +1,6 @@
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+
 create table if not exists secciones
 (
     idSeccion   int auto_increment
@@ -18,6 +21,7 @@ create table if not exists inventario
     costo        decimal(10, 2) not null,
     idSeccion    int            not null,
     imagen       varchar(255)       null,
+    descripcion  varchar(255)   not null,
     constraint inventario_ibfk_1
         foreign key (idSeccion) references secciones (idSeccion)
 );
