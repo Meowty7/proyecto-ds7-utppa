@@ -10,14 +10,14 @@ create table if not exists inventario
 (
     idInventario int auto_increment
         primary key,
-    Partes_de_Autos        varchar(100)   not null,
-    Marcas        varchar(50)    not null,
-    Modelo       varchar(30)    not null,
-    Año        int            not null,
+    parte        varchar(100)   not null,
+    marca        varchar(50)    not null,
+    modelo       varchar(30)    not null,
+    fecha        int            not null,
     cantidad     int            not null,
-    Costo        decimal(10, 2) not null,
+    costo        decimal(10, 2) not null,
     idSeccion    int            not null,
-    Imagen       longblog       null,
+    imagen       longblog       null,
     constraint inventario_ibfk_1
         foreign key (idSeccion) references secciones (idSeccion)
 );

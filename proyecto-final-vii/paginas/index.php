@@ -94,7 +94,7 @@ if (!isset($_SESSION['usuario'])) {
         <a href="FormularioRegistro.php">Registro de inventario de partes de autos </a>
     </div>
     <div class="cuadro">
-        <a href="  "> Ubicaciones de los item del auto</a>
+        <a href="demo.php"> Ubicaciones de los item del auto</a>
     </div>
 </div>
 <div class="container">
