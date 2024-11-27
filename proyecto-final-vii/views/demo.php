@@ -90,7 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?= htmlspecialchars($_SESSION['mensaje']); unset($_SESSION['mensaje']); ?>
         </div>
     <?php endif; ?>
-
+    <button onclick="window.location.href='index.php'"style="position: absolute; top: 10px; left: 110px; background-color: #04858c; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer;">Pagina Inicio</button>
+   
     <form action="" method="POST" enctype="multipart/form-data" class="space-y-4">
         <div>
             <label for="nombreParte" class="block text-sm font-medium text-gray-700">Nombre de la Parte:</label>

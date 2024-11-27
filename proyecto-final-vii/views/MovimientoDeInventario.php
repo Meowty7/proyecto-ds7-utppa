@@ -114,11 +114,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 14px;
             color: red;
         }
+        button2 {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <h2 style="text-align: center;">Movimiento de Inventario</h2>
-
+<button2 onclick="window.location.href='index.php'"style="position: absolute; top: 10px; left: 110px; background-color: #04858c; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer;">Pagina Inicio</button2>
+   
 <div class="form-container">
     <!-- Tabla de Inventarios -->
     <table>
